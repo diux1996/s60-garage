@@ -30,11 +30,11 @@
     }
     if (out.has("error")) m.textContent = "Volvo meldt: " + out.get("error") + (out.has("error_description") ? " – " + out.get("error_description") : "");
     var target = "s60garage://callback?" + out.toString();
-    setTimeout(function () { location.replace(target); }, out.has("error") ? 4000 : 0);
+    setTimeout(function () { location.replace(target); }, out.has("error") ? 900 : 0);
     setTimeout(function () {
       var a = document.createElement("a"); a.href = target; a.textContent = "Tik hier";
       m.appendChild(document.createTextNode(" Open je de app niet automatisch? ")); m.appendChild(a);
-    }, out.has("error") ? 4500 : 1500);
+    }, out.has("error") ? 2500 : 1500);
   })();
 </script>
 </body>
