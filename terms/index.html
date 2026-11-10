@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>S60 Garage – Terms and Privacy</title>
+<style>
+  :root { --bg: #ffffff; --fg: #1c1f24; --muted: #5d6470; --line: #e3e6ea; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #0e1013; --fg: #e4e7ec; --muted: #9aa1ad; --line: #23272e; } }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  main { max-width: 680px; margin: 0 auto; padding: 48px max(16px, env(safe-area-inset-left)) 64px; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 0 0 4px; }
+  h2 { font-size: 17px; margin: 32px 0 6px; }
+  p, li { color: var(--fg); }
+  .meta { color: var(--muted); font-size: 14px; margin: 0 0 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+  ul { padding-left: 20px; }
+</style>
+</head>
+<body>
+<main>
+<h1>S60 Garage – Terms and Privacy</h1>
+<p class="meta">Last updated: 10 November 2026</p>
+
+<h2>1. About the application</h2>
+<p>S60 Garage is a private iOS application developed by DIUX (Aykut Bulut) for personal use. It is used by one person only, the owner of the connected vehicle, and is not offered to the public, sold or distributed through any app store.</p>
+
+<h2>2. Purpose</h2>
+<p>The application connects to the Volvo Cars Connected Vehicle API to:</p>
+<ul>
+  <li>show the status of the owner's own vehicle (lock, doors, windows, tyres, fuel, odometer, service and warning information);</li>
+  <li>send remote commands (lock/unlock, climatisation, engine start/stop, honk/flash).</li>
+</ul>
+
+<h2>3. Data handling</h2>
+<ul>
+  <li>Vehicle data is retrieved on demand and shown in the application only.</li>
+  <li>No vehicle or account data is stored on any server, sold, shared with third parties or used for analytics or advertising.</li>
+  <li>Access tokens, API keys and client credentials are stored only in the iOS Keychain on the owner's device.</li>
+  <li>Sensitive commands (unlock, engine start) require device authentication (Face ID or passcode).</li>
+  <li>The sign-in redirect page on this site only forwards the one-time authorisation code to the application and stores nothing.</li>
+</ul>
+
+<h2>4. Consent and revocation</h2>
+<p>Access is granted by the vehicle owner through Volvo ID sign-in. Consent can be revoked at any time by signing out in the application, by removing the connection in the application settings, or via the Volvo ID account.</p>
+
+<h2>5. Liability</h2>
+<p>The application is provided "as is" for personal use. The developer is not responsible for any damage resulting from the use of remote commands. Use is at the owner's own risk and must comply with local laws, for example regarding running an engine while the vehicle is unattended.</p>
+
+<h2>6. Contact</h2>
+<p>DIUX – info@diux.nl – www.diux.nl</p>
+</main>
+</body>
+</html>
