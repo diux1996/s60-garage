@@ -19,14 +19,22 @@
   // Stuurt alleen code en state door naar de app (vast schema, dus geen open doorverwijzing).
   // Niets wordt opgeslagen of naar een server gestuurd.
   (function () {
-    var q = new URLSearchParams(location.search), out = new URLSearchParams();
-    ["code", "state", "error", "error_description"].forEach(function (k) { if (q.has(k)) out.set(k, q.get(k)); });
-    var target = "s60garage://callback?" + out.toString();
+    // Volvo kan de velden in de query (?code=) of in het fragment (#code=) zetten; beide worden gelezen.
+    var q = new URLSearchParams(location.search), h = new URLSearchParams(location.hash.replace(/^#/, "")), out = new URLSearchParams();
+    ["code", "state", "error", "error_description"].forEach(function (k) { var v = q.get(k) || h.get(k); if (v) out.set(k, v); });
+    var names = []; q.forEach(function (_, k) { names.push(k); }); h.forEach(function (_, k) { names.push("#" + k); });
     history.replaceState(null, "", location.pathname); // code uit de adresbalk en geschiedenis
-    location.replace(target);
+    var m = document.getElementById("m");
+    if (!out.has("code") && !out.has("error")) { // niets bruikbaars: toon alleen de veldnamen, nooit de waarden
+      m.textContent = "Geen inlogcode ontvangen van Volvo. Ontvangen velden: " + (names.join(", ") || "geen") + "."; return;
+    }
+    if (out.has("error")) m.textContent = "Volvo meldt: " + out.get("error") + (out.has("error_description") ? " – " + out.get("error_description") : "");
+    var target = "s60garage://callback?" + out.toString();
+    setTimeout(function () { location.replace(target); }, out.has("error") ? 4000 : 0);
     setTimeout(function () {
-      document.getElementById("m").innerHTML = 'Open je de app niet automatisch? <a href="' + target.replace(/"/g, "&quot;") + '">Tik hier</a>.';
-    }, 1500);
+      var a = document.createElement("a"); a.href = target; a.textContent = "Tik hier";
+      m.appendChild(document.createTextNode(" Open je de app niet automatisch? ")); m.appendChild(a);
+    }, out.has("error") ? 4500 : 1500);
   })();
 </script>
 </body>
